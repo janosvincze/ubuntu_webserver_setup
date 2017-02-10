@@ -13,8 +13,6 @@
 # The server
  Server IP address: [35.162.49.152](ssh://root@35.162.49.152:2200) SSH port: 2200
  
- <a href="ssh://root@35.162.49.152:2200">35.162.49.152:2200</a>
- 
  Web address: [ec2-35-162-49-152.us-west-2.compute.amazonaws.com/](http://ec2-35-162-49-152.us-west-2.compute.amazonaws.com/)
  
 # Login to Amazon server
