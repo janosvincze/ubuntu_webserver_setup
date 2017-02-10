@@ -1,13 +1,21 @@
 # Setup Ubuntu Webserver for Flask application
 
 # Content
- 1. [Login to Amazon server](#login-to-amazon-server)
- 2. [Adding new sudo user](#adding-new-sudo-user)
- 3. [Installing Postgresql and create database](#installing-postgresql-and-create-database)
- 4. [Installing Apache, Flask enviroment and the application](#installing-apache-flask-enviroment-and-the-application)
- 5. [Firewall setup](#firewall-setup)
- 6. [Configure the local timezone](#configure-the-local-timezone)
- 7. [Sources](#sources)
+ 1. [The server](#the-server)
+ 2. [Login to Amazon server](#login-to-amazon-server)
+ 3. [Adding new sudo user](#adding-new-sudo-user)
+ 4. [Installing Postgresql and create database](#installing-postgresql-and-create-database)
+ 5. [Installing Apache, Flask enviroment and the application](#installing-apache-flask-enviroment-and-the-application)
+ 6. [Firewall setup](#firewall-setup)
+ 7. [Configure the local timezone](#configure-the-local-timezone)
+ 8. [Sources](#sources)
+ 
+# The server
+ Server IP address: [35.162.49.152](ssh://root@35.162.49.152:2200) SSH port: 2200
+ 
+ <a href="ssh://root@35.162.49.152:2200">35.162.49.152:2200</a>
+ 
+ Web address: [ec2-35-162-49-152.us-west-2.compute.amazonaws.com/](http://ec2-35-162-49-152.us-west-2.compute.amazonaws.com/)
  
 # Login to Amazon server
  * Download your private_key as your_private_key.rsa
