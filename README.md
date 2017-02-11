@@ -3,12 +3,15 @@
 # Content
  1. [The server](#the-server)
  2. [Login to Amazon server](#login-to-amazon-server)
- 3. [Adding new sudo user](#adding-new-sudo-user)
- 4. [Installing Postgresql and create database](#installing-postgresql-and-create-database)
- 5. [Installing Apache, Flask enviroment and the application](#installing-apache-flask-enviroment-and-the-application)
- 6. [Firewall setup](#firewall-setup)
- 7. [Configure the local timezone](#configure-the-local-timezone)
- 8. [Sources](#sources)
+ 3. [Update the system](update-the-system)
+ 4. [Adding new sudo user](#adding-new-sudo-user)
+ 5. [Disable root SSH accessibility](#disable-root-ssh-accessibility)
+ 6. [Installing Postgresql and create database](#installing-postgresql-and-create-database)
+ 7. [Installing Apache, Flask enviroment and the application](#installing-apache-flask-enviroment-and-the-application)
+ 8. [Firewall setup](#firewall-setup)
+ 9. [Install NTP](#install-ntp)
+ 10. [Configure the local timezone](#configure-the-local-timezone)
+ 11. [Sources](#sources)
  
 # The server
  Server IP address: [35.162.49.152](ssh://root@35.162.49.152:2200) SSH port: 2200
@@ -31,11 +34,58 @@
  
  If you want use PuTTY terminal to login the server, you should convert the private key with PuTTYgen!
  
+## Update the system
+ ```
+ apt-get update
+ apt-get upgrade
+ ```
+ 
 ## Adding new sudo user
 
  ```
  adduser grader
  usermod -aG sudo grader
+ visudo -f /etc/sudoers.d/grader
+ ```
+ Adding line:
+ ```
+ grader ALL=(ALL) ALL
+ ```
+ Adding ssh accessibility:
+ * Generating ssh keypair with passphrase
+ * Create .ssh directory
+ 
+  ```
+  su - grader
+  mkdir .ssh
+  ```
+ * Adding the public key
+  ```
+  nano ~/.ssh/authorized_keys
+  ```
+  Copy here to the generated public key, and save the file
+  
+  ```
+  chmod 600 ~/.ssh/authorized_keys
+  ```
+ Change the password:
+ ```
+ passwd
+ ```
+ 
+## Disable root SSH accessibility
+ Change ssh config with:
+ ```
+ sudo /etc/ssh/sshd.conf
+ ```
+ Change the following parameter to:
+ ```
+ PermitRootLogin no
+ ```
+ 
+ Restart ssh service:
+ ```
+ sudo service ssh restart
  ```
  
 ## Installing Postgresql and create database
@@ -221,6 +271,11 @@
  sudo ufw status
  sudo ufw enable
  ```
+ 
+## Install NTP
+ ```
+ sudo apt-get install ntp
+ ```
 
 ## Configure the local timezone
  ```
@@ -231,5 +286,6 @@
   * Udacity course
   * [Flask documentation](http://flask.pocoo.org/docs/0.12/installation/#virtualenv) 
   * [The Hitchhiker’s Guide to Python](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
+  * Udacity Reviewer - Thanks!
   
   
